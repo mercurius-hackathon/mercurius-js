@@ -8,25 +8,26 @@
 
     var Web3 = require('web3');
 
+    var httpProvider = 'http://192.168.74.157:9545';
+    var contractAddress = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';
+
     if (typeof web3 !== 'undefined') {
         web3 = new Web3(web3.currentProvider);
     } else {
-        web3 = new Web3(new Web3.providers.HttpProvider("http://192.168.74.157:9545"));
+        web3 = new Web3(new Web3.providers.HttpProvider(httpProvider));
     }
 
     var contract = web3.eth.contract(contractABI);
 
-    var mercuriusAddress = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';
+    var contractInstance = contract.at(contractAddress);
 
-    var contractInstance = contract.at(mercuriusAddress);
-
-    var balance = contractInstance.balanceOf(mercuriusAddress);
+    var balance = contractInstance.balanceOf(contractAddress);
     balance = balance.toString(10);
     console.log(balance);
 
     // iterate algo loop
     for (var i = 0; i < balance; i++) {
-        var strategy = contractInstance.getStrategy(mercuriusAddress, i);
+        var strategy = contractInstance.getStrategy(contractAddress, i);
         console.log(strategy);
     }
 
