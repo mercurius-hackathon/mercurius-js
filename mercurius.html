@@ -10,6 +10,7 @@
 
     var httpProvider = 'http://10.217.2.141:9545';
     var contractAddress = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';
+    var ownerAddress = '0x627306090abab3a6e1400e9345bc60c78a8bef57';
 
     var strategyArray = ['ubah', 'best', 'crp', 'bcrp', 'up', 'eg', 'ons', 'anticor1', 'anticor2', 'pamr', 'cwmr_var', 'cwmr_std', 'olmar2', 'bk', 'bnn', 'cornk', 'm0', 'rmr', 'sp', 'wmamr'];
 
@@ -23,13 +24,13 @@
 
     var contractInstance = contract.at(contractAddress);
 
-    var balance = contractInstance.balanceOf(contractAddress);
+    var balance = contractInstance.balanceOf(ownerAddress);
     balance = balance.toString(10);
     console.log(balance);
-    
+
     // iterate algo loop
     for (var i = 0; i < balance; i++) {
-        var strategy = contractInstance.getStrategy(contractAddress, i);
+        var strategy = contractInstance.getStrategy(ownerAddress, i);
         console.log(strategy);
     }
 
