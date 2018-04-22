@@ -8,8 +8,10 @@
 
     var Web3 = require('web3');
 
-    var httpProvider = 'http://192.168.74.157:9545';
+    var httpProvider = 'http://10.217.2.141:9545';
     var contractAddress = '0xf12b5dd4ead5f743c6baa640b0216200e89b60da';
+
+    var strategyArray = ['ubah', 'best', 'crp', 'bcrp', 'up', 'eg', 'ons', 'anticor1', 'anticor2', 'pamr', 'cwmr_var', 'cwmr_std', 'olmar2', 'bk', 'bnn', 'cornk', 'm0', 'rmr', 'sp', 'wmamr'];
 
     if (typeof web3 !== 'undefined') {
         web3 = new Web3(web3.currentProvider);
@@ -24,7 +26,7 @@
     var balance = contractInstance.balanceOf(contractAddress);
     balance = balance.toString(10);
     console.log(balance);
-
+    
     // iterate algo loop
     for (var i = 0; i < balance; i++) {
         var strategy = contractInstance.getStrategy(contractAddress, i);

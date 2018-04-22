@@ -131,7 +131,7 @@ window.contractABI = [
         "type": "address"
       },
       {
-        "name": "_tokenId",
+        "name": "_strateId",
         "type": "uint256"
       }
     ],
@@ -168,6 +168,45 @@ window.contractABI = [
       {
         "name": "freq",
         "type": "uint256"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address"
+      },
+      {
+        "name": "_strateId",
+        "type": "uint256"
+      },
+      {
+        "name": "_backTestResult",
+        "type": "string"
+      }
+    ],
+    "name": "setBackTestResult",
+    "outputs": [
+      {
+        "name": "result",
+        "type": "uint256"
+      },
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "dna",
+        "type": "uint256"
+      },
+      {
+        "name": "backTestResult",
+        "type": "string"
       }
     ],
     "payable": false,
@@ -264,6 +303,15 @@ window.contractABI = [
     "type": "function"
   },
   {
+    "constant": false,
+    "inputs": [],
+    "name": "encryptScript",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "constant": true,
     "inputs": [],
     "name": "numTokensTotal",
@@ -353,6 +401,28 @@ window.contractABI = [
       }
     ],
     "name": "Mint",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "name": "backTestResult",
+        "type": "string"
+      }
+    ],
+    "name": "SetBackTestResult",
     "type": "event"
   },
   {
